@@ -13,7 +13,10 @@ const InputForm = () => {
   }
 
   const handleOnSubmit = useCallback(() => {
-    dispatch(actions.sendMessage(message));
+    dispatch(actions.sendMessage({
+      id: new Date().getTime(),
+      message
+    }));
     setMessage('')
   }, [message])
 
