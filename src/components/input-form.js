@@ -3,13 +3,19 @@ import { useDispatch } from 'react-redux';
 
 import * as actions from '../redux/actions'
 
+let timer = null
+
 const InputForm = () => {
   const dispatch = useDispatch();
-
   const [message, setMessage] = useState('');
 
   const handleOnChange = (event) => {
-    setMessage(event.target.value)
+    if (timer) {
+      clearInterval(timer)
+    }
+    timer = setTimeout(() => {
+      setMessage(event.target.value)
+    }, 500)
   }
 
   const handleOnSubmit = useCallback(() => {
@@ -17,14 +23,13 @@ const InputForm = () => {
       id: new Date().getTime(),
       message
     }));
-    setMessage('')
   }, [message])
 
   return <div>
-    <input value={message} placeholder='Enter message here' onChange={handleOnChange} />
+    <input placeholder='Enter message here' onChange={handleOnChange} />
     <br />
     <br />
-    <button onClick={handleOnSubmit} disabled={!message.trim()}>Submit</button>
+    <button onClick={handleOnSubmit}>Submit</button>
   </div>
 }
 
