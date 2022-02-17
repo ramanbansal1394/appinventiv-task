@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Messages from './messages';
 
 import * as actions from '../redux/actions'
 
@@ -26,13 +27,14 @@ const InputForm = () => {
       id: new Date().getTime(),
       message
     }));
-  }, [message])
+  }, [message, dispatch])
 
   return <div>
     <input placeholder='Enter message here' onChange={handleOnChange} />
     <br />
     <br />
     <button onClick={handleOnSubmit}>Submit</button>
+    <Messages />
   </div>
 }
 
