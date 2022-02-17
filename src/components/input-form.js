@@ -42,7 +42,9 @@ const InputForm = () => {
       <br />
       <button onClick={handleOnSubmit}>Submit</button>
     </div>
-    <Messages ref={messageRef} />
+    <div style={{ paddingBottom: '50px' }}>
+      <Messages ref={messageRef} />
+    </div>
   </div>
 }
 
