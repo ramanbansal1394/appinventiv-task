@@ -8,6 +8,7 @@ let timer = null
 
 const InputForm = () => {
   const messageRef = useRef();
+  const inputRef = useRef('');
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
 
@@ -29,15 +30,17 @@ const InputForm = () => {
       id: new Date().getTime(),
       message
     }));
+    setMessage('')
+    inputRef.current.value = ''
     window.scrollTo({
       top: document.documentElement.scrollHeight,
       behavior: 'auto'
     });
-  }, [message, dispatch])
+  }, [message, dispatch, inputRef])
 
   return <div>
     <div className='wrapper'>
-      <input placeholder='Enter message here' onChange={handleOnChange} />
+      <input ref={inputRef} placeholder='Enter message here' onChange={handleOnChange} />
       <br />
       <br />
       <button onClick={handleOnSubmit}>Submit</button>
