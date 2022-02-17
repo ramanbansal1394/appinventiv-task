@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import Messages from './messages';
 
@@ -7,6 +7,7 @@ import * as actions from '../redux/actions'
 let timer = null
 
 const InputForm = () => {
+  const messageRef = useRef();
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
 
@@ -22,11 +23,16 @@ const InputForm = () => {
   const handleOnSubmit = useCallback(() => {
     if (!message) {
       alert('Please enter message')
+      return
     }
     dispatch(actions.sendMessage({
       id: new Date().getTime(),
       message
     }));
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'auto'
+    });
   }, [message, dispatch])
 
   return <div>
@@ -34,7 +40,7 @@ const InputForm = () => {
     <br />
     <br />
     <button onClick={handleOnSubmit}>Submit</button>
-    <Messages />
+    <Messages ref={messageRef} />
   </div>
 }
 
