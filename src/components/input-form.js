@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const InputForm = () => {
   const [message, setMessage] = useState('')
@@ -7,11 +7,14 @@ const InputForm = () => {
     setMessage(event.target.value)
   }
 
+  const handleOnSubmit = useCallback(() => {
+  }, [message])
+
   return <div>
     <input value={message} placeholder='Enter message here' onChange={handleOnChange} />
     <br />
     <br />
-    <button>Submit</button>
+    <button onClick={handleOnSubmit}>Submit</button>
   </div>
 }
 
