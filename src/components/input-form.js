@@ -19,6 +19,9 @@ const InputForm = () => {
   }
 
   const handleOnSubmit = useCallback(() => {
+    if (!message) {
+      alert('Please enter message')
+    }
     dispatch(actions.sendMessage({
       id: new Date().getTime(),
       message
