@@ -14,7 +14,6 @@ const Messages = () => {
   }
 
   return <div className='messages'>
-    <h4>All Messages</h4>
     <table bordered={true}>
       <thead>
         <tr>
