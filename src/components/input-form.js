@@ -43,7 +43,7 @@ const InputForm = () => {
       <input ref={inputRef} placeholder='Enter message here' onChange={handleOnChange} />
       <br />
       <br />
-      <button onClick={handleOnSubmit}>Submit</button>
+      <button onClick={handleOnSubmit} disabled={!message.trim()}>Submit</button>
     </div>
     <div className='messages-wrapper'>
       <Messages ref={messageRef} />
