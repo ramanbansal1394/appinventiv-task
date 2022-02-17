@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as actions from '../redux/actions'
 
 const Messages = () => {
+  const chatParent = useRef();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'auto'
+    });
+  })
+
   const dispatch = useDispatch();
 
   const list = useSelector(state => state.messages?.list || [])
@@ -14,7 +23,7 @@ const Messages = () => {
 
   return <div style={{
     display: 'block', width: 500, padding: 30
-  }}>
+  }} ref={chatParent}>
     <h4>All Messages</h4>
     <table bordered={true}>
       <thead>
