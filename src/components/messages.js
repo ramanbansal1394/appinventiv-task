@@ -13,9 +13,7 @@ const Messages = () => {
     dispatch(actions.deleteMessage(id));
   }
 
-  return <div style={{
-    display: 'block', width: 500, padding: 30
-  }}>
+  return <div className='messages'>
     <h4>All Messages</h4>
     <table bordered={true}>
       <thead>

@@ -36,10 +36,12 @@ const InputForm = () => {
   }, [message, dispatch])
 
   return <div>
-    <input placeholder='Enter message here' onChange={handleOnChange} />
-    <br />
-    <br />
-    <button onClick={handleOnSubmit}>Submit</button>
+    <div className='wrapper'>
+      <input placeholder='Enter message here' onChange={handleOnChange} />
+      <br />
+      <br />
+      <button onClick={handleOnSubmit}>Submit</button>
+    </div>
     <Messages ref={messageRef} />
   </div>
 }
